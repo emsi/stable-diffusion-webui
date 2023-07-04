@@ -1,6 +1,12 @@
 services:
   stable-diffusion-webui:
-    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     image: emsi/stable-diffusion-webui
     build:
       context: ../
